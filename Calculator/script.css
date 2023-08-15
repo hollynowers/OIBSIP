@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .calculator:hover {
+        transform: scale(1.03);
+    }
+
+    .calculator::before,
+    .calculator::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 4px;
+        background-color: #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+#display {
+    width: 400px;
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 28px;
+    text-align: right;
+    background: linear-gradient(to right, #fff, #f2f2f2);
+    background-size: 200% 100%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #eaeaea, #d4d4d4);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 25px;
+    font-size: 20px;
+    background-color: #eaeaea;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+        z-index: 1;
+        transition: width 0.2s ease;
+    }
+
+    button:hover::before {
+        width: 100%;
+    }
+
+    button::after {
+        content: attr(data-label);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        z-index: 2;
+        transition: opacity 0.2s ease;
+    }
+
+    button:hover::after {
+        opacity: 1;
+    }
+
+#clear,
+#equals {
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+    #clear:hover,
+    #equals:hover {
+        transform: rotate(15deg);
+    }
+
+.operator {
+    background-color: #f3cc70;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#clear {
+    background-color: #ff7979;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+    #clear:hover {
+        background-color: #ff5252;
+        transform: scale(1.1);
+    }
+
+#equals {
+    background-color: #61c0bf;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+    #equals:hover {
+        background-color: #00a8a7;
+        transform: scale(1.1);
+    }
+
+/* Center the calculator in the middle of the screen */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
